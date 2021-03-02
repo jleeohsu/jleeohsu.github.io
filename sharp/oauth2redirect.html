@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AppAuth Demo</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-orange.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", function() {
+            var redirectUri = "org.orcatech.sharp://oauth2redirect";
+
+            // copy query and fragment verbatim to the redirect uri, if they
+            // are defined
+            if (window.location.search) {
+                redirectUri += window.location.search;
+            }
+            if (window.location.hash) {
+                redirectUri += window.location.hash;
+            }
+
+            document.getElementById('redirect-link').onclick = () => {
+                window.location.href = redirectUri;
+            };
+        });
+    </script>
+    <style>
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: sans-serif;
+            padding: 16px;
+        }
+
+        #redirect-link {
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div>Authorization complete...</div>
+    <button id="redirect-link" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        Return to app
+    </button>
+</div>
+</body>
+</html>
+
